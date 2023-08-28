@@ -10,6 +10,12 @@ const displayPhone = phones =>{
     // get the main div
     const productContainer = document.getElementById('product-container');
     productContainer.textContent = '';
+    // display show all button 
+    if(phones.length > 9){
+      const showAllBtn = document.getElementById('show-all-btn');
+      showAllBtn.classList.remove('hidden');
+    }
+    phones.slice(0,8);
     phones.forEach(phone => {
         // new card element create
         const div = document.createElement('div');
