@@ -32,6 +32,7 @@ const displayPhone = phones =>{
         // append child
         productContainer.appendChild(div);
     });
+    toggleLoadingSpinner(false);
 }
 // search button handle
 function searchHandler(){
@@ -39,7 +40,17 @@ function searchHandler(){
   const searchTextElement = document.getElementById('search-text');
   const searchText = searchTextElement.value;
   //call load phone for search text
+  toggleLoadingSpinner(true);
   loadPhone(searchText);
   searchTextElement.value = '';
+
 }
-loadPhone();
+// loading spinner handle
+const toggleLoadingSpinner = (isLoading) =>{
+  const loadingSpinner = document.getElementById('loading-spinner');
+  if(isLoading)
+    loadingSpinner.classList.remove('hidden');
+  else
+    loadingSpinner.classList.add('hidden');
+}
+// loadPhone();
