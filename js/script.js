@@ -1,21 +1,26 @@
 // fetch api
-const loadPhone = async (searchText) =>{
+const loadPhone = async (searchText, isShowAll) =>{
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data;
-    displayPhone(phones);
+    displayPhone(phones, isShowAll);
 }
 // display products
-const displayPhone = phones =>{
+const displayPhone = (phones, isShowAll) =>{
     // get the main div
     const productContainer = document.getElementById('product-container');
     productContainer.textContent = '';
     // display show all button 
-    if(phones.length > 9){
-      const showAllBtn = document.getElementById('show-all-btn');
+    const showAllBtn = document.getElementById('show-all-btn');
+    if(phones.length > 12 && !isShowAll){
       showAllBtn.classList.remove('hidden');
     }
-    phones.slice(0,8);
+    else{
+      showAllBtn.classList.add('hidden');
+    }
+    if(!isShowAll){
+      phones = phones.slice(0,12);
+    }
     phones.forEach(phone => {
         // new card element create
         const div = document.createElement('div');
@@ -41,14 +46,14 @@ const displayPhone = phones =>{
     toggleLoadingSpinner(false);
 }
 // search button handle
-function searchHandler(){
+function searchHandler(isShowAll){
   // get input text from search bar
   const searchTextElement = document.getElementById('search-text');
   const searchText = searchTextElement.value;
   //call load phone for search text
   toggleLoadingSpinner(true);
-  loadPhone(searchText);
-  searchTextElement.value = '';
+  loadPhone(searchText, isShowAll);
+  // searchTextElement.value = '';
 
 }
 // loading spinner handle
@@ -59,4 +64,7 @@ const toggleLoadingSpinner = (isLoading) =>{
   else
     loadingSpinner.classList.add('hidden');
 }
-// loadPhone();
+// handle show all btn 
+const showAllHandler = () =>{
+  searchHandler(true);
+}
