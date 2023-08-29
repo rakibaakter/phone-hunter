@@ -2,67 +2,81 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phone Hunter</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phone Hunter</title>
 
-    <!-- tailwind and daisy ui -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.2/dist/full.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- tailwind and daisy ui -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.2/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="w-11/12 mx-auto text-gray-600">
-    <header class="container mx-auto">
-        <!-- nav var -->
-        <div class="navbar bg-base-100">
-            <div class="navbar-start">
-              <a class="btn btn-ghost normal-case text-xl">HOT GADGETS</a>
-            </div>
-            
-            <div class="navbar-end">
-              <a class="btn btn-active btn-neutral">Sign Up</a>
-            </div>
-          </div>
-         <!-- banner -->
-         <section class="text-center my-8 space-y-6">
-            <h1 class="text-4xl font-bold">Apple Iphone 13 Pro Max</h1>
-            <p class="font-medium">There are many variations of passages of Lorem Ipsum available, <br> but the majority have suffered alteration in some form, by injected humou.</p>
-            <button class="btn btn-neutral">Buy Now</button>
-            <div class="grid grid-cols-3 justify-center items-end gap-0">
-                <img class="justify-self-end" src="./asset/images/banner2.png" alt="">
-                <img class="justify-self-center" src="./asset/images/banner1.png" alt="">
-                <img class="justify-self-start" src="./asset/images/banner2.png" alt="">
-            </div>
-         </section>
-    </header>
-    <main>
-      <!-- seacrh container -->
-      <section class="text-center my-8 space-y-6">
-        <h3 class="text-2xl font-bold">Search your phone</h3>
-        <div class="flex justify-center">
-          <input id="search-text"type="text" placeholder="search your phone" class="input input-bordered w-full max-w-xs"/>
+  <header class="container mx-auto">
+    <!-- nav var -->
+    <div class="navbar bg-base-100">
+      <div class="navbar-start">
+        <a class="btn btn-ghost normal-case text-xl">HOT GADGETS</a>
+      </div>
+
+      <div class="navbar-end">
+        <a class="btn btn-active btn-neutral">Sign Up</a>
+      </div>
+    </div>
+    <!-- banner -->
+    <section class="text-center my-8 space-y-6">
+      <h1 class="text-4xl font-bold">Apple Iphone 13 Pro Max</h1>
+      <p class="font-medium">There are many variations of passages of Lorem Ipsum available, <br> but the majority have
+        suffered alteration in some form, by injected humou.</p>
+      <button class="btn btn-neutral">Buy Now</button>
+      <div class="grid grid-cols-3 justify-center items-end gap-0">
+        <img class="justify-self-end" src="./asset/images/banner2.png" alt="">
+        <img class="justify-self-center" src="./asset/images/banner1.png" alt="">
+        <img class="justify-self-start" src="./asset/images/banner2.png" alt="">
+      </div>
+    </section>
+  </header>
+  <main>
+    <!-- seacrh container -->
+    <section class="text-center my-8 space-y-6">
+      <h3 class="text-2xl font-bold">Search your phone</h3>
+      <div class="flex justify-center">
+        <input id="search-text" type="text" placeholder="search your phone"
+          class="input input-bordered w-full max-w-xs" />
         <button onclick="searchHandler()" class="btn btn-neutral">Search</button>
-        </div>
+      </div>
 
-      </section>
-      <!-- products section -->
-      <section class="my-8">
-        <!-- loading spinner -->
-        <div id="loading-spinner" class="text-center hidden">
-          <span class="loading loading-spinner loading-lg"></span>
-        </div>
-        <!-- product container -->
-        <div id="product-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        </div>
-        <!-- show all btn -->
-        <div id="show-all-btn" class="text-center hidden mt-10">
-          <button onclick="showAllHandler()" class="btn btn-neutral">Show All</button>
-        </div>
-        </div>
-      </section>
-    </main>
+    </section>
+    <!-- products section -->
+    <section class="my-8">
+      <!-- loading spinner -->
+      <div id="loading-spinner" class="text-center hidden">
+        <span class="loading loading-spinner loading-lg"></span>
+      </div>
+      <!-- product container -->
+      <div id="product-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      </div>
+      <!-- show details modal -->
+      <!-- Open the modal using ID.showModal() method -->
+      <!-- <button class="btn" onclick="showDetailsModal.showModal()">open modal</button> -->
+      <dialog id="showDetailsModal" class="modal">
+        <form method="dialog" class="modal-box">
+          <div id="modal-details-container" class="space-y-4">
+          </div>
+          <div class="modal-action">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn bg-red-700 text-white hover:text-red-700">Close</button>
+          </div>
+        </form>
+      </dialog>
+      <!-- show all btn -->
+      <div id="show-all-btn" class="text-center hidden mt-10">
+        <button onclick="showAllHandler()" class="btn btn-neutral">Show All</button>
+      </div>
+    </section>
+  </main>
 
-    <script src="./js/script.js"></script>
+  <script src="./js/script.js"></script>
 </body>
 
 </html>
